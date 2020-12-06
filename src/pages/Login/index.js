@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { Container, Card, Title, Form, Input, ButtonLogin, Text, Link } from './styles';
 
 function Login() {
   const history = useHistory();
+  const [form, setForm] = useState({ cpf: '', password: '' });
+
+  const handleOnChangeInput = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value })
+  };
+
 
   const handleOnRegister = () => {
     history.push("/register")
   };
 
   const handleOnSubmit = () => {
-    //history.push("/projects")
+    console.log(form);
   };
 
   return (
@@ -19,8 +26,8 @@ function Login() {
       <Card>
         <Title>Entrar</Title>
         <Form>
-          <Input label="CPF" variant="outlined" />
-          <Input label="Senha" variant="outlined" />
+          <Input label="CPF" variant="outlined" name="cpf" value={form.cpf} onChange={handleOnChangeInput} />
+          <Input label="Senha" type="password" variant="outlined" name="password" value={form.password} onChange={handleOnChangeInput} />
           <ButtonLogin variant="contained" color="primary" onClick={handleOnSubmit}>
             Entrar
           </ButtonLogin>
