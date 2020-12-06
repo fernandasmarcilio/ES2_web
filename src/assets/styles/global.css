@@ -1,0 +1,29 @@
+:root {
+  --color-background: #F0F0F7;
+  --color-primary: #079B8D;
+  --color-secondary: #E8B023;
+  --color-danger: #E82823;
+  --color-white: #FFF;
+  --color-black: #000;
+  --color-text: rgb(59, 59, 59);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--color-background);
+}
+
+body,
+input,
+button,
+textarea {
+  font: 500 1.6rem Roboto;
+}
+
+a {
+  text-decoration: none;
+}
