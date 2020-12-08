@@ -15,7 +15,7 @@ const theme = createMuiTheme({
   },
 });
 
-function App() {
+const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Routes />

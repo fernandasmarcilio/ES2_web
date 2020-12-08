@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import { Container, Card, Title, Form, Input, ButtonLogin, Text, Link } from './styles';
 
-function Login() {
+const Login = () => {
   const history = useHistory();
   const [form, setForm] = useState({ cpf: '', password: '' });
 
@@ -19,11 +19,12 @@ function Login() {
 
   const handleOnSubmit = () => {
     console.log(form);
+    history.push("/home")
   };
 
   return (
     <Container>
-      <Card>
+      <Card elevation={3}>
         <Title>Entrar</Title>
         <Form>
           <Input label="CPF" variant="outlined" name="cpf" value={form.cpf} onChange={handleOnChangeInput} />

@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import { Container, Card, Title, Form, Input, ButtonLogin, Text, Link } from './styles';
 
-function Register() {
+const Register = () => {
   const history = useHistory();
   const [form, setForm] = useState({ cpf: '', email: '', password: '', repeatPassword: '' });
 
@@ -22,7 +22,7 @@ function Register() {
 
   return (
     <Container>
-      <Card>
+      <Card elevation={3}>
         <Title>Cadastrar</Title>
         <Form>
           <Input label="CPF" variant="outlined" name="cpf" value={form.cpf} onChange={handleOnChangeInput} />
@@ -30,7 +30,7 @@ function Register() {
           <Input label="Senha" type="password" variant="outlined" name="password" value={form.password} onChange={handleOnChangeInput} />
           <Input label="Repetir senha" type="password" variant="outlined" name="repeatPassword" value={form.repeatPassword} onChange={handleOnChangeInput} />
           <ButtonLogin variant="contained" color="primary" onClick={handleOnRegister}>
-            Entrar
+            Cadastrar
         </ButtonLogin>
         </Form>
         <Text>Ja tem uma conta? <Link onClick={handleOnLogin}>Clique aqui</Link></Text>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TextField, Button } from "@material-ui/core";
+import { Paper, TextField, Button } from "@material-ui/core";
 
 export const Container = styled.div`
   width: 100vw;
@@ -10,7 +10,7 @@ export const Container = styled.div`
   background: var(--color-primary);
 `;
 
-export const Card = styled.div`
+export const Card = styled(Paper)`
   background: var(--color-white);
   width: 40%;
   max-width: 450px;
