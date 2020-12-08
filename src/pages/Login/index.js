@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
+import UserService from '../../services/UserService';
 import { Container, Card, Title, Form, Input, ButtonLogin, Text, Link } from './styles';
 
 function Login() {
@@ -20,7 +20,9 @@ function Login() {
   const handleOnSubmit = () => {
     console.log(form);
   };
-
+  console.log(UserService);
+  UserService.login();
+  console.log(UserService);
   return (
     <Container>
       <Card>
