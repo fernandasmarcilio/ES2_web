@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
+import UserService from '../../services/UserService';
 import { Container, Card, Title, Form, Input, ButtonLogin, Text, Link } from './styles';
 
 const Login = () => {
@@ -21,7 +21,9 @@ const Login = () => {
     console.log(form);
     history.push("/home")
   };
-
+  console.log(UserService);
+  UserService.login();
+  console.log(UserService);
   return (
     <Container>
       <Card elevation={3}>
