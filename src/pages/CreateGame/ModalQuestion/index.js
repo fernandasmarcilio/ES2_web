@@ -29,6 +29,7 @@ const ModalQuestion = ({
       open={openModal}
       fullWidth={true}
       maxWidth="sm"
+      disableBackdropClick
     >
       <DialogTitle>
         Escolha as perguntas

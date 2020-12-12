@@ -7,6 +7,7 @@ import Register from './pages/Register';
 import Home from './pages/Home';
 import CreateGame from './pages/CreateGame';
 import CreateQuestion from './pages/CreateQuestion';
+import TriviaGame from './pages/TriviaGame';
 
 const isAuthenticated = true;
 const isTeacher = true;
@@ -48,6 +49,7 @@ const Routes = () => (
       <Route path="/register" component={Register} />
 
       <PrivateRoute path="/home" component={Home} />
+      <PrivateRoute path="/trivia" component={TriviaGame} />
 
       <PrivateRouteToTeacher path="/creategame" component={CreateGame} />
       <PrivateRouteToTeacher path="/createquestion" component={CreateQuestion} />

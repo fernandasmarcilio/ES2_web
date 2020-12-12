@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import Menu from '../../components/Menu';
 
@@ -11,8 +12,19 @@ import Paper from '@material-ui/core/Paper';
 
 import { Container } from './styles';
 
+const data = [
+  { id: '01', name: 'trilha 01', position: '01', phase: '01', question: '01', progress: '0%' },
+  { id: '02', name: 'trilha 02', position: '01', phase: '01', question: '01', progress: '0%' },
+  { id: '03', name: 'trilha 03', position: '01', phase: '01', question: '01', progress: '0%' }
+]
 
 const Home = () => {
+  const history = useHistory();
+
+  const handleClickToPlay = (trivia) => {
+    history.push("/trivia", { trivia })
+  }
+
   return (
     <>
       <Menu />
@@ -30,16 +42,19 @@ const Home = () => {
           </TableHead>
           <TableBody>
 
-            <TableRow >
-              <TableCell component="th" scope="row">
-                {'teste'}
-              </TableCell>
-              <TableCell align="right">{'teste'}</TableCell>
-              <TableCell align="right">{'teste'}</TableCell>
-              <TableCell align="right">{'teste'}</TableCell>
-              <TableCell align="right">{'teste'}</TableCell>
-              <TableCell align="right">{'teste'}</TableCell>
-            </TableRow>
+            {data.map((trivia) => (
+              <TableRow hover onClick={() => handleClickToPlay(trivia)} style={{ cursor: 'pointer' }}>
+                <TableCell component="th" scope="row">
+                  {trivia.name}
+                </TableCell>
+                <TableCell align="right">{trivia.position}</TableCell>
+                <TableCell align="right">{trivia.phase}</TableCell>
+                <TableCell align="right">{trivia.question}</TableCell>
+                <TableCell align="right">{trivia.progress}</TableCell>
+                <TableCell align="right">{''}</TableCell>
+              </TableRow>
+            ))}
+
 
           </TableBody>
         </Table>
