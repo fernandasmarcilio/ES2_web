@@ -18,12 +18,10 @@ const Login = () => {
   };
 
   const handleOnSubmit = () => {
-    console.log(form);
+    UserService.login();
     history.push("/home")
   };
-  console.log(UserService);
-  UserService.login();
-  console.log(UserService);
+
   return (
     <Container>
       <Card elevation={3}>

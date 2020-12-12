@@ -3,6 +3,7 @@ import { Toolbar, Button } from "@material-ui/core";
 
 export const Container = styled(Toolbar)`
   && {
+    height: 64px;
     display: flex;
     justify-content: space-between;
   }
