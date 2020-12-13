@@ -7,7 +7,6 @@ export const Container = styled.div`
   display: flex;
   padding: 20px 0;
   justify-content: center;
-  
   background: var(--color-white);
 `;
 
@@ -16,7 +15,7 @@ export const Card = styled(Paper)`
   width: 60%;
   height: 100%;
   border-radius: 10px;
-  padding: 30px 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,6 +40,10 @@ export const Input = styled(TextField)`
   }
 `;
 
+export const AnswerContainer = styled.div`
+  display: flex;
+`;
+
 export const ButtonLogin = styled(Button)`
   && {
     margin: 10px 0;
@@ -56,3 +59,4 @@ export const Text = styled.p`
 export const difficultyContainer = styled.div`
   display: flex;
 `;
+

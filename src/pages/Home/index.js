@@ -10,7 +10,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import { Container } from './styles';
+import { Container, ContainerTable } from './styles';
 
 const data = [
   { id: '01', name: 'trilha 01', position: '01', phase: '01', question: '01', progress: '0%' },
@@ -28,36 +28,38 @@ const Home = () => {
   return (
     <>
       <Menu />
-      <Container component={Paper}>
-        <Table size="small" aria-label="a dense table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Nome da trilha</TableCell>
-              <TableCell align="right">Posição</TableCell>
-              <TableCell align="right">Fase</TableCell>
-              <TableCell align="right">Pergunta</TableCell>
-              <TableCell align="right">Progresso</TableCell>
-              <TableCell align="right">Baixar</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-
-            {data.map((trivia) => (
-              <TableRow hover onClick={() => handleClickToPlay(trivia)} style={{ cursor: 'pointer' }}>
-                <TableCell component="th" scope="row">
-                  {trivia.name}
-                </TableCell>
-                <TableCell align="right">{trivia.position}</TableCell>
-                <TableCell align="right">{trivia.phase}</TableCell>
-                <TableCell align="right">{trivia.question}</TableCell>
-                <TableCell align="right">{trivia.progress}</TableCell>
-                <TableCell align="right">{''}</TableCell>
+      <Container>
+        <ContainerTable component={Paper}>
+          <Table size="small" aria-label="a dense table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Nome da trilha</TableCell>
+                <TableCell align="right">Posição</TableCell>
+                <TableCell align="right">Fase</TableCell>
+                <TableCell align="right">Pergunta</TableCell>
+                <TableCell align="right">Progresso</TableCell>
+                <TableCell align="right">Baixar</TableCell>
               </TableRow>
-            ))}
+            </TableHead>
+            <TableBody>
+
+              {data.map((trivia) => (
+                <TableRow hover onClick={() => handleClickToPlay(trivia)} style={{ cursor: 'pointer' }}>
+                  <TableCell component="th" scope="row">
+                    {trivia.name}
+                  </TableCell>
+                  <TableCell align="right">{trivia.position}</TableCell>
+                  <TableCell align="right">{trivia.phase}</TableCell>
+                  <TableCell align="right">{trivia.question}</TableCell>
+                  <TableCell align="right">{trivia.progress}</TableCell>
+                  <TableCell align="right">{''}</TableCell>
+                </TableRow>
+              ))}
 
 
-          </TableBody>
-        </Table>
+            </TableBody>
+          </Table>
+        </ContainerTable>
       </Container>
     </>
 
