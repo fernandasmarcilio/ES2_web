@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+
+import UserContext from './context/UserContext';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -9,14 +11,12 @@ import CreateGame from './pages/CreateGame';
 import CreateQuestion from './pages/CreateQuestion';
 import TriviaGame from './pages/TriviaGame';
 
-const isAuthenticated = true;
-const isTeacher = true;
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ component: Component, signed, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      isAuthenticated ? (
+      signed ? (
         <Component {...props} />
       ) : (
           <Redirect to={{ pathname: "/login", state: { from: props.location } }} />
@@ -25,11 +25,11 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   />
 );
 
-const PrivateRouteToTeacher = ({ component: Component, ...rest }) => (
+const PrivateRouteToTeacher = ({ component: Component, signed, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      isTeacher ? (
+      signed ? (
         <Component {...props} />
       ) : (
           <Redirect to={{ pathname: "/home", state: { from: props.location } }} />
@@ -38,25 +38,29 @@ const PrivateRouteToTeacher = ({ component: Component, ...rest }) => (
   />
 );
 
-const Routes = () => (
-  <BrowserRouter>
-    <Switch>
-      <Route exact path="/">
-        {isAuthenticated ? <Redirect to="/home" /> : <Redirect to="/login" />}
-      </Route>
+const Routes = () => {
+  const { signed } = useContext(UserContext);
 
-      <Route exact path="/login" component={Login} />
-      <Route path="/register" component={Register} />
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          {signed ? <Redirect to="/home" /> : <Redirect to="/login" />}
+        </Route>
 
-      <PrivateRoute path="/home" component={Home} />
-      <PrivateRoute path="/trivia" component={TriviaGame} />
+        <Route exact path="/login" component={Login} />
+        <Route path="/register" component={Register} />
 
-      <PrivateRouteToTeacher path="/creategame" component={CreateGame} />
-      <PrivateRouteToTeacher path="/createquestion" component={CreateQuestion} />
+        <PrivateRoute path="/home" component={Home} signed={signed} />
+        <PrivateRoute path="/trivia" component={TriviaGame} signed={signed} />
 
-      <Route path="*" component={() => <h1>Page not found</h1>} />
-    </Switch>
-  </BrowserRouter>
-);
+        <PrivateRouteToTeacher path="/creategame" component={CreateGame} signed={signed} />
+        <PrivateRouteToTeacher path="/createquestion" component={CreateQuestion} signed={signed} />
+
+        <Route path="*" component={() => <h1>Page not found</h1>} />
+      </Switch>
+    </BrowserRouter>
+  )
+};
 
 export default Routes;

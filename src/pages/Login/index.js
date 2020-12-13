@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+
+import UserContext from '../../context/UserContext';
+
 import UserService from '../../services/UserService';
 import { Container, Card, Title, Form, Input, ButtonLogin, Text, Link } from './styles';
 

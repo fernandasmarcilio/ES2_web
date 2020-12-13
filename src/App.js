@@ -1,4 +1,7 @@
 import Routes from './routes';
+
+import { UserProvider } from './context/UserContext';
+
 import './assets/styles/global.css';
 
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -18,7 +21,9 @@ const theme = createMuiTheme({
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Routes />
+      <UserProvider>
+        <Routes />
+      </UserProvider>
     </ThemeProvider>
   );
 }
