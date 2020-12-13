@@ -7,6 +7,8 @@ import UserService from '../../services/UserService';
 import { Container, Card, Title, Form, Input, ButtonLogin, Text, Link } from './styles';
 
 const Login = () => {
+  const { signed, login } = useContext(UserContext);
+  console.log(signed);
   const history = useHistory();
   const [form, setForm] = useState({ cpf: '', password: '' });
 
@@ -21,7 +23,7 @@ const Login = () => {
   };
 
   const handleOnSubmit = () => {
-    UserService.login();
+    login();
     history.push("/home")
   };
 
