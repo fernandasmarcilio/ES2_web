@@ -53,6 +53,6 @@ export const Text = styled.p`
   margin-top: 10px;
 `;
 
-export const difficultyContainer = styled.div`
+export const DifficultyContainer = styled.div`
   display: flex;
 `;

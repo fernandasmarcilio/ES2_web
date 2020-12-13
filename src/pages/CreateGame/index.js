@@ -5,7 +5,7 @@ import ModalQuestion from './ModalQuestion';
 
 import { RadioGroup, Radio, FormControlLabel } from '@material-ui/core';
 
-import { Container, Card, Title, Form, Input, ButtonLogin, Text, difficultyContainer } from './styles';
+import { Container, Card, Title, Form, Input, ButtonLogin, Text, DifficultyContainer } from './styles';
 
 const data = [
   { id: '01', pergunta: 'pergunta01', respostas: ['resp01', 'resp02'], respostaCorreta: 'resp02' },
@@ -80,11 +80,11 @@ const CreateGame = () => {
 
             <Text>Dificuldade do jogo</Text>
             <RadioGroup name="difficulty" value={form.difficulty} onChange={handleOnChangeInput}>
-              <difficultyContainer>
+              <DifficultyContainer>
                 <FormControlLabel value="easy" control={<Radio />} label="facil" />
                 <FormControlLabel value="medium" control={<Radio />} label="médio" />
                 <FormControlLabel value="hard" control={<Radio />} label="difícil" />
-              </difficultyContainer>
+              </DifficultyContainer>
             </RadioGroup>
 
             <Text>Modo de escolha da pergunta</Text>

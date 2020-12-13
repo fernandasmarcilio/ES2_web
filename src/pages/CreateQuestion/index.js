@@ -4,7 +4,7 @@ import Menu from '../../components/Menu';
 
 import { RadioGroup, Radio, FormControlLabel } from '@material-ui/core';
 
-import { Container, Card, Title, Form, Input, ButtonLogin, Text, AnswerContainer, difficultyContainer } from './styles';
+import { Container, Card, Title, Form, Input, ButtonLogin, Text, AnswerContainer, DifficultyContainer } from './styles';
 
 const alternatives = [
   { id: 'a', title: 'Alternativa A' },
@@ -59,11 +59,11 @@ const CreateQuestion = () => {
 
             <Text>Dificuldade</Text>
             <RadioGroup name="difficulty" value={form.difficulty} onChange={handleOnChangeInput}>
-              <difficultyContainer>
+              <DifficultyContainer>
                 <FormControlLabel value="easy" control={<Radio />} label="facil" />
                 <FormControlLabel value="medium" control={<Radio />} label="médio" />
                 <FormControlLabel value="hard" control={<Radio />} label="difícil" />
-              </difficultyContainer>
+              </DifficultyContainer>
             </RadioGroup>
 
 
