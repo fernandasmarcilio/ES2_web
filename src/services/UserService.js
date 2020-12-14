@@ -14,8 +14,8 @@ class UserService {
         this.authenticationToken = null;
     };
 
-    register(){
-        
+    register(userData, callback){
+        console.log(userData);
     }
 }
 export default new UserService();

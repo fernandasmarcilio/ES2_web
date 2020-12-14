@@ -10,7 +10,7 @@ const Login = () => {
   const { signed, login } = useContext(UserContext);
   console.log(signed);
   const history = useHistory();
-  const [form, setForm] = useState({ cpf: '', password: '' });
+  const [form, setForm] = useState({ email: '', password: '' });
 
   const handleOnChangeInput = (e) => {
     const { name, value } = e.target;
@@ -23,8 +23,9 @@ const Login = () => {
   };
 
   const handleOnSubmit = () => {
-    login();
-    history.push("/home")
+    login(form, ()=>{
+      history.push("/home");
+    });
   };
 
   return (
@@ -32,7 +33,7 @@ const Login = () => {
       <Card elevation={3}>
         <Title>Entrar</Title>
         <Form>
-          <Input label="CPF" variant="outlined" name="cpf" value={form.cpf} onChange={handleOnChangeInput} />
+          <Input label="Email" variant="outlined" name="email" value={form.email} onChange={handleOnChangeInput} />
           <Input label="Senha" type="password" variant="outlined" name="password" value={form.password} onChange={handleOnChangeInput} />
           <ButtonLogin variant="contained" color="primary" onClick={handleOnSubmit}>
             Entrar

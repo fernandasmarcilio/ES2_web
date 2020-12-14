@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import Menu from '../../components/Menu';
 
 import { RadioGroup, Radio, FormControlLabel } from '@material-ui/core';
+
+import TriviaContext from "../../context/TriviaContext";
 
 import { Container, Card, Title, Form, Input, ButtonLogin, Text, AnswerContainer, DifficultyContainer } from './styles';
 
@@ -19,6 +21,7 @@ const defaultAnswers = { a: '', b: '', c: '', d: '' };
 const CreateQuestion = () => {
   const [form, setForm] = useState({ question: '', correctAnswer: 'a', difficulty: 'easy' });
   const [answers, setAnswers] = useState(defaultAnswers);
+  const { createQuestion } = useContext(TriviaContext);
 
   const handleOnChangeInput = (e) => {
     const { name, value } = e.target;
@@ -31,7 +34,9 @@ const CreateQuestion = () => {
   }
 
   const handleOnSubmit = () => {
-    console.log(form, answers);
+    createQuestion({...form,answers}, () =>{
+      console.log("asdasd");
+    })
   };
 
 
@@ -49,7 +54,7 @@ const CreateQuestion = () => {
             <RadioGroup name="correctAnswer" value={form.correctAnswer} onChange={handleOnChangeInput}>
               {alternatives.map((alternative) => (
                 <AnswerContainer>
-                  <FormControlLabel value={alternative.id} control={<Radio />} />
+                  <FormControlLabel key={alternative.id} value={alternative.id} control={<Radio />} />
 
                   <Input label={alternative.title} variant="outlined" name={alternative.id} value={answers[alternative.id]} onChange={handleOnChangeAnswersInput} />
                 </AnswerContainer>
