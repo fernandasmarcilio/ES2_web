@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import CreateGame from './pages/CreateGame';
 import CreateQuestion from './pages/CreateQuestion';
 import TriviaGame from './pages/TriviaGame';
+import GameScore from './pages/GameScore';
 
 
 const PrivateRoute = ({ component: Component, signed, ...rest }) => (
@@ -53,6 +54,7 @@ const Routes = () => {
 
         <PrivateRoute path="/home" component={Home} signed={signed} />
         <PrivateRoute path="/trivia" component={TriviaGame} signed={signed} />
+        <PrivateRoute path="/score" component={GameScore} signed={signed} />
 
         <PrivateRouteToTeacher path="/creategame" component={CreateGame} signed={signed} />
         <PrivateRouteToTeacher path="/createquestion" component={CreateQuestion} signed={signed} />
